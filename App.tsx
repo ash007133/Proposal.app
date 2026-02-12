@@ -1,15 +1,5 @@
-// src/App.tsx
-
-import React, { useState, useEffect } from 'react';
-import {
-  Home,
-  FileText,
-  CheckCircle,
-  DollarSign,
-  Users,
-  PenTool,
-  LayoutGrid,
-} from 'lucide-react';
+import React, { useState } from 'react';
+import { Home, FileText, CheckCircle, DollarSign, Users, PenTool, LayoutGrid } from 'lucide-react';
 import { Sidebar } from './components/Sidebar';
 import { Cover } from './components/Cover';
 import { Introduction } from './components/Introduction';
@@ -45,7 +35,7 @@ const App: React.FC = () => {
   };
 
   // Intersection Observer to update active navigation state on scroll
-  useEffect(() => {
+  React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -67,26 +57,27 @@ const App: React.FC = () => {
 
   const handlePackageSelect = (id: string, total: number) => {
     setSelectedPackageId(id);
+    // Optional: Scroll to acceptance or show a notification
+    // const acceptanceEl = document.getElementById('acceptance');
+    // if(acceptanceEl) acceptanceEl.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="flex min-h-screen bg-white text-slate-900 font-sans">
-      {/* ✅ Sidebar */}
-      <Sidebar
-        navItems={NAV_ITEMS}
-        activeSection={activeSection}
+    <div className="flex min-h-screen bg-slate-50 text-slate-900 font-sans">
+      <Sidebar 
+        navItems={NAV_ITEMS} 
+        activeSection={activeSection} 
         onNavigate={handleNavigate}
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
       />
-
-      {/* ✅ Main Content */}
-      <main className="flex-1 md:ml-64 w-full transition-all duration-300">
+      
+      <main className="flex-1 md:ml-72 w-full transition-all duration-300">
         <Cover />
         <Introduction />
         <Services />
         <Process />
-        <Pricing
+        <Pricing 
           onSelectPackage={handlePackageSelect}
           selectedPackageId={selectedPackageId}
         />
