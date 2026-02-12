@@ -2,10 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./index.tsx",
-    "./App.tsx",
-    "./components/**/*.{js,jsx,ts,tsx}",
-    "./services/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",   // ✅ Scan *all* files in src
   ],
   theme: {
     extend: {
