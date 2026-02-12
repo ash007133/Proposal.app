@@ -1,21 +1,21 @@
-/* src/index.css */
-
-/* ✅ Tailwind directives must be at the very top */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ Global body styles for Studio look */
-body {
-  @apply font-sans antialiased bg-[#1e1e1e] text-[#e3e3e3];
-}
+@layer base {
+  html, body {
+    @apply bg-studio-bg text-studio-text antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
 
-/* ✅ Sidebar styling */
-.sidebar {
-  @apply bg-[#131314];
-}
-
-/* ✅ Panel border styling */
-.panel {
-  @apply border border-[#444746];
+  /* Fix for scrollbars to look like Google's */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-studio-sidebar;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-studio-border rounded-full;
+  }
 }
