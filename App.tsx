@@ -1,5 +1,15 @@
-import React, { useState } from 'react';
-import { Home, FileText, CheckCircle, DollarSign, Users, PenTool, LayoutGrid } from 'lucide-react';
+// src/App.tsx
+
+import React, { useState, useEffect } from 'react';
+import {
+  Home,
+  FileText,
+  CheckCircle,
+  DollarSign,
+  Users,
+  PenTool,
+  LayoutGrid,
+} from 'lucide-react';
 import { Sidebar } from './components/Sidebar';
 import { Cover } from './components/Cover';
 import { Introduction } from './components/Introduction';
@@ -35,7 +45,7 @@ const App: React.FC = () => {
   };
 
   // Intersection Observer to update active navigation state on scroll
-  React.useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -63,21 +73,22 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-50 text-slate-900 font-sans">
-      <Sidebar 
-        navItems={NAV_ITEMS} 
-        activeSection={activeSection} 
+    <div className="flex min-h-screen bg-[#1e1e1e] text-[#e3e3e3] font-sans">
+      <Sidebar
+        navItems={NAV_ITEMS}
+        activeSection={activeSection}
         onNavigate={handleNavigate}
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
       />
-      
-      <main className="flex-1 md:ml-72 w-full transition-all duration-300">
+
+      {/* ✅ Adjusted offset to match Sidebar width (w-64 = 16rem) */}
+      <main className="flex-1 md:ml-64 w-full transition-all duration-300">
         <Cover />
         <Introduction />
         <Services />
         <Process />
-        <Pricing 
+        <Pricing
           onSelectPackage={handlePackageSelect}
           selectedPackageId={selectedPackageId}
         />
