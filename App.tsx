@@ -67,13 +67,11 @@ const App: React.FC = () => {
 
   const handlePackageSelect = (id: string, total: number) => {
     setSelectedPackageId(id);
-    // Optional: Scroll to acceptance or show a notification
-    // const acceptanceEl = document.getElementById('acceptance');
-    // if(acceptanceEl) acceptanceEl.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="flex min-h-screen bg-[#1e1e1e] text-[#e3e3e3] font-sans">
+    <div className="flex min-h-screen bg-white text-slate-900 font-sans">
+      {/* ✅ Sidebar */}
       <Sidebar
         navItems={NAV_ITEMS}
         activeSection={activeSection}
@@ -82,7 +80,7 @@ const App: React.FC = () => {
         setIsOpen={setIsSidebarOpen}
       />
 
-      {/* ✅ Adjusted offset to match Sidebar width (w-64 = 16rem) */}
+      {/* ✅ Main Content */}
       <main className="flex-1 md:ml-64 w-full transition-all duration-300">
         <Cover />
         <Introduction />
